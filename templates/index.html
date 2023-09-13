@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Analyzer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background: linear-gradient(to bottom, #000000, #333333); /* Black gradient background */
+            color: white; /* White text color */
+            text-align: center; /* Center-align text */
+            padding: 20px;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.1); /* White with 10% opacity for container */
+            padding: 50px;
+            border: 2px solid white; /* White border */
+            border-radius: 10px; /* Rounded corners */
+            display: inline-block; /* Centering the container */
+            text-align: left; /* Left-align container contents */
+        }
+        textarea, input[type="file"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid white; /* White border for form elements */
+            border-radius: 5px; /* Rounded corners for form elements */
+            background-color: rgba(255, 255, 255, 0.1); /* White with 10% opacity for form elements */
+            color: white; /* White text color for form elements */
+        }
+    </style>
+</head>
+<body>
+    <h1>Sentiment Analyzer</h1>
+    <div class="container">
+        <form action="/analyze" method="post" enctype="multipart/form-data">
+            <textarea name="text" rows="4" cols="50" placeholder="Enter text here"></textarea>
+            <br>
+            <input type="file" name="file">
+            <br>
+            <input type="submit" value="submit">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Analyzer</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #000000, #333333); /* Black gradient background */
+            color: white; /* White text color */
+            text-align: center; /* Center-align text */
+            display: flex; /* Flex container */
+            flex-direction: column; /* Stack items vertically */
+            justify-content: center; /* Center-align vertically */
+            align-items: center; /* Center-align horizontally */
+            height: 100vh; /* Full viewport height */
+        }
+        .container {
+            margin-top: 100px;
+            background-color: rgba(255, 255, 255, 0.1); /* White with 10% opacity for container */
+            padding: 20px;
+            border: 2px solid white; /* White border */
+            border-radius: 10px; /* Rounded corners */
+            text-align: center; /* Center-align container contents */
+        }
+        .emoji {
+            font-size: 100px;
+        }
+        .text {
+            font-size: 24px;
+            margin-top: 10px; /* Add space between emoji and text */
+            background-color: white;
+            border-radius: 5px;
+            color: {% if sentiment_category == 'Positive' %}green{% elif sentiment_category == 'Negative' %}red{% elif sentiment_category == 'Neutral' %}blue{% endif %};
+        }
+        img {
+            width: 80%;
+            max-width: 600px;
+            margin-top: 20px; /* Add space below the image */
+        }
+        .back {
+            color: white;
+            text-decoration: none;
+        }
+        /* Hover style for .back class */
+        .back:hover {
+            text-decoration: underline; /* Add underline on hover */
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Sentiment Analysis Result</h1>
+    
+    <div class="container">
+        <!-- Display the sentiment message with color -->
+        <div class="text">
+            {{ sentiment_message }}
+        </div>
+        
+        <!-- Display the sentiment emoji based on sentiment category below the text -->
+        <div class="emoji">
+            {% if sentiment_category == 'Positive' %}
+                😃
+            {% elif sentiment_category == 'Negative' %}
+                😞
+            {% elif sentiment_category == 'Neutral' %}
+                😐
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Display the sentiment chart if available -->
+    {% if display_image %}
+        <img src="{{ url_for('static', filename=image_name) }}" alt="Sentiment Chart">
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('index') }} " class="back">Back to Home</a>
+</body>
+</html>
